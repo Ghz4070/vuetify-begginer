@@ -9,11 +9,15 @@ export default new Vuetify({
         themes: {
             light: {
                 green: colors.green.darken1,
-                orange: colors.orange.lighten1, 
+                orange: colors.orange.lighten1,
+                buttonCards: colors.orange,
+                colorListItemLD: colors.orange.accent1
             },
             dark: {
                 green: colors.grey.darken1,
                 orange: colors.grey.darken4,
+                buttonCards: colors.green.lighten1,
+                colorListItemLD: colors.green.accent1
             },
         },
     },

@@ -1,34 +1,35 @@
 <template>
-  <b-container>
-    <div v-if="meals.length">
-      <b-row>
-        <div v-bind:key="data.index" v-for="data in meals">
-          <b-col l="4">
-            <b-card
-              v-bind:title="data.strCategory"
-              v-bind:img-src="data.strCategoryThumb"
-              img-alt="Image"
-              img-top 
-              tag="article"
-              style="max-width: 20rem;"
-              class="mb-2"
-            >
-              <b-card-text>{{ `${data.strCategoryDescription.slice(0,100)}...` }}</b-card-text>
-              <b-button href="#" variant="primary">View food</b-button>
-            </b-card>
-          </b-col>
-        </div>
-      </b-row>
-    </div>
-    <div v-else>
-      <h5>No meals available yet 😢</h5>
-    </div>
-  </b-container>
+  <div v-if="meals.length">
+    <v-row justify="center">
+      <div :key="data.index" v-for="data in meals">
+        <v-col col="4">
+          <v-card class="mb-2" style="max-width: 20rem;" tag="article">
+            <v-img class="white--text align-end" height="200px" :src="data.strCategoryThumb"></v-img>
+            <v-card-subtitle class="pb-0">{{ data.strCategory }}</v-card-subtitle>
+            <v-card-text class="text--primary">
+              <div>{{ `${data.strCategoryDescription.slice(0,100)}...` }}</div>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-btn color="buttonCards" text>Share</v-btn>
+
+              <v-btn color="buttonCards" text>Explore</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </div>
+    </v-row>
+  </div>
+  <div v-else>
+    <h5>No meals available yet 😢</h5>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
+  name: "Cards",
   data() {
     return {
       meals: []

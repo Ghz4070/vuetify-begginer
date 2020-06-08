@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+
     <Navigation />
 
     <v-content>
@@ -9,6 +10,7 @@
     </v-content>
 
     <Footer />
+    
   </v-app>
 </template>
 

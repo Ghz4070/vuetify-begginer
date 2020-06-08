@@ -5,13 +5,3 @@
     </v-container>
   </div>
 </template>
-
-<script>
-export default {
-  name: "Account",
-  mounted() {}
-};
-</script>
-
-<style scoped>
-</style>

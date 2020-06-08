@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <v-container class="text-center" fluid>
-      <HelloWorld />
+    <v-container>
+      <Cards />
     </v-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Cards from "@/components/Cards";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    Cards
   }
 };
 </script>

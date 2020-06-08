@@ -1,7 +1,15 @@
 <template>
   <div id="navigation">
-    <v-navigation-drawer color="green darken-1" expand-on-hover :permanent="permanent" app dark>
-      <v-list-item-group v-model="group" active-class="orange--text text--accent-1">
+    <v-navigation-drawer
+      v-model="drawer"
+      color="green darken-1"
+      expand-on-hover
+      :mini-variant="miniVariant"
+      :permanent="permanent"
+      app
+      dark
+    >
+      <v-list-item-group v-model="group" active-class="colorListItemLD--text text--accent-1">
         <v-list dense nav class="py-0">
           <v-list-item two-line class="px-0">
             <v-list-item-avatar>
@@ -29,6 +37,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app color="green darken-1" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -66,12 +75,6 @@
       </div>
       <!-- Liste deroulante avec effet  -->
 
-      <v-btn icon v-if="$vuetify.theme.dark" @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-        <v-icon>mdi-white-balance-sunny</v-icon>
-      </v-btn>
-      <v-btn icon v-else @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-        <v-icon>mdi-brightness-2</v-icon>
-      </v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -81,7 +84,9 @@ export default {
   name: "Navigation",
   data() {
     return {
-      permanent: true,
+      drawer: false,
+      permanent: false,
+      miniVariant: false,
       group: null,
       items: [
         { link: "/", title: "Home", icon: "mdi-home" },
@@ -89,6 +94,11 @@ export default {
         { link: "/about", title: "About", icon: "mdi-information-outline" }
       ]
     };
+  },
+  watch: {
+    group() {
+      this.drawer = true;
+    }
   }
 };
 </script>
