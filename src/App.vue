@@ -40,10 +40,10 @@
       <!-- Liste deroulante avec effet  -->
 
       <v-btn icon v-if="$vuetify.theme.dark" @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-        <v-icon>mdi-brightness-4</v-icon>
+        <v-icon>mdi-white-balance-sunny</v-icon>
       </v-btn>
       <v-btn icon v-else @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-        <v-icon>mdi-brightness-7</v-icon>
+        <v-icon>mdi-brightness-2</v-icon>
       </v-btn>
     </v-app-bar>
 
