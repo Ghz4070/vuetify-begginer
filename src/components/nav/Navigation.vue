@@ -1,32 +1,25 @@
 <template>
   <div id="navigation">
     <v-navigation-drawer
-      v-model="drawer"
+      v-model="permanent"
       color="green darken-1"
       expand-on-hover
       :mini-variant="miniVariant"
-      :permanent="permanent"
+      :permanent="permanent"  
       app
       dark
     >
-      <v-list-item-group v-model="group" active-class="colorListItemLD--text text--accent-1">
+      <v-list-item-group active-class="colorListItemLD--text text--accent-1">
         <v-list dense nav class="py-0">
-          <v-list-item two-line class="px-0">
-            <v-list-item-avatar>
-              <img src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg" />
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title>Vuetify-App-Test</v-list-item-title>
-              <v-list-item-subtitle>Ceci est juste un test</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+
+          <NavProfile />
 
           <template v-for="item in items">
             <v-list-group
               v-if="item.children"
               :key="item.title"
-              v-model="item.model"
               :prepend-icon="item.icon"
+              :value="item.model"
               no-action
             >
               <template v-slot:activator>
@@ -54,12 +47,13 @@
               </v-list-item-content>
             </v-list-item>
           </template>
+
         </v-list>
       </v-list-item-group>
     </v-navigation-drawer>
 
     <v-app-bar app color="green darken-1" dark>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="permanent = !permanent"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -101,21 +95,24 @@
 </template>
 
 <script>
+import NavProfile from './navComponents/NavProfile'
+
 export default {
   name: "Navigation",
+  components:{
+    NavProfile,
+  },
   data() {
     return {
-      drawer: false,
       permanent: false,
       miniVariant: false,
-      group: null,
       items: [
         { link: "/", title: "Home", icon: "mdi-home" },
         { link: "/account", title: "Account", icon: "mdi-account" },
         {
           icon: "mdi-note",
           title: "Blog",
-          model: true,
+          model: false,
           children: [
             { link: "/blog/accueil", title: "Accueil" },
             { link: "/blog/display-cards", title: "Affichage des cartes" }
@@ -124,7 +121,7 @@ export default {
         {
           icon: "mdi-dots-vertical",
           title: "More",
-          model: true,
+          model: false,
           children: [
             { title: "Import" },
             { title: "Export" },
