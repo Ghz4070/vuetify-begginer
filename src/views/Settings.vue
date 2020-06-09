@@ -1,7 +1,7 @@
 <template>
-  <div id="home">
+  <div id="about">
     <v-container class="text-center" fluid>
-      <h1>Accueil</h1>
+      <h1>Reglages</h1>
     </v-container>
   </div>
 </template>

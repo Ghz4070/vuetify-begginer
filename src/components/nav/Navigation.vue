@@ -134,7 +134,7 @@ export default {
           ]
         },
         { link: "/about", title: "About", icon: "mdi-information-outline" },
-        { icon: "mdi-cog", title: "Settings" }
+        { link: "/reglage", icon: "mdi-cog", title: "Settings" }
       ]
     };
   }
