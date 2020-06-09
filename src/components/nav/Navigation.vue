@@ -21,23 +21,45 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-divider></v-divider>
+          <template v-for="item in items">
+            <v-list-group
+              v-if="item.children"
+              :key="item.title"
+              v-model="item.model"
+              :prepend-icon="item.icon"
+              no-action
+            >
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </template>
 
-          <v-list-item v-for="item in items" :key="item.title" :to="item.link">
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
+              <v-list-item v-for="(child, i) in item.children" :key="i" :to="child.link">
+                <v-list-item-action v-if="child.icon">
+                  <v-icon>{{ child.icon }}</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>{{ child.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+            <v-list-item v-else :key="item.title" :to="item.link">
+              <v-list-item-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
         </v-list>
       </v-list-item-group>
     </v-navigation-drawer>
 
     <v-app-bar app color="green darken-1" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -74,7 +96,6 @@
         </v-menu>
       </div>
       <!-- Liste deroulante avec effet  -->
-
     </v-app-bar>
   </div>
 </template>
@@ -91,14 +112,31 @@ export default {
       items: [
         { link: "/", title: "Home", icon: "mdi-home" },
         { link: "/account", title: "Account", icon: "mdi-account" },
-        { link: "/about", title: "About", icon: "mdi-information-outline" }
+        {
+          icon: "mdi-note",
+          title: "Blog",
+          model: true,
+          children: [
+            { link: "/blog/accueil", title: "Accueil" },
+            { link: "/blog/display-cards", title: "Affichage des cartes" }
+          ]
+        },
+        {
+          icon: "mdi-dots-vertical",
+          title: "More",
+          model: true,
+          children: [
+            { title: "Import" },
+            { title: "Export" },
+            { title: "Print" },
+            { title: "Undo changes" },
+            { title: "Other contacts" }
+          ]
+        },
+        { link: "/about", title: "About", icon: "mdi-information-outline" },
+        { icon: "mdi-cog", title: "Settings" }
       ]
     };
-  },
-  watch: {
-    group() {
-      this.drawer = true;
-    }
   }
 };
 </script>

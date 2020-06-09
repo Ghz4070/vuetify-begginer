@@ -2,7 +2,7 @@
   <div v-if="meals.length">
     <v-row justify="center">
       <div :key="data.index" v-for="data in meals">
-        <v-col col="4">
+        <v-col cols="12">
           <v-card class="mb-2" style="max-width: 20rem;" tag="article">
             <v-img class="white--text align-end" height="200px" :src="data.strCategoryThumb"></v-img>
             <v-card-subtitle class="pb-0">{{ data.strCategory }}</v-card-subtitle>

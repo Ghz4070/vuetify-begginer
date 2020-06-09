@@ -28,6 +28,18 @@ const routes = [
     component: () => import('../views/Account.vue'),
     meta: { transition: 'fade-in-right' },
   },
+  {
+    path: '/blog/accueil',
+    name: 'BlogAccueil',
+    component: () => import('../views/blog/BlogAccueil.vue'),
+    meta: { transition: 'fade-in-right' },
+  },
+  {
+    path: '/blog/display-cards',
+    name: 'DisplayCards',
+    component: () => import('../views/blog/DisplayCards.vue'),
+    meta: { transition: 'fade-in-right' },
+  },
 ]
 
 const router = new VueRouter({

@@ -1,19 +1,13 @@
 <template>
-  <div class="home">
-    <v-container>
-      <Cards />
+  <div id="home">
+    <v-container class="text-center" fluid>
+      <h1>Accueil</h1>
     </v-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Cards from "@/components/Cards";
-
 export default {
   name: "Home",
-  components: {
-    Cards
-  }
 };
 </script>
